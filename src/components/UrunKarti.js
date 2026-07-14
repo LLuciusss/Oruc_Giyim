@@ -1,10 +1,13 @@
-// src/components/UrunKarti.js
 'use client';
 import { useState } from 'react';
 import { supabase } from '@/utils/supabaseClient';
 
 export default function UrunKarti({ urun, user }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Supabase Storage üzerindeki resimlerin tam adresi
+  const resimBaseUrl = "https://tqzarbqjjmojznngysrs.supabase.co/storage/v1/object/public/resimler/";
+  const tamResimUrl = `${resimBaseUrl}${urun.resim_url}`;
 
   const sepeteEkle = async () => {
     if (!user) {
@@ -23,9 +26,9 @@ export default function UrunKarti({ urun, user }) {
 
   return (
     <div className="border rounded-xl p-4 shadow-sm hover:shadow-md transition bg-white">
-      {/* Ürün Resmi (Tıklayınca Büyür) */}
+      {/* Ürün Resmi (tamResimUrl kullanıldı) */}
       <img
-        src={urun.resim_url}
+        src={tamResimUrl}
         alt={urun.isim}
         className="w-full h-64 object-cover rounded-lg cursor-pointer hover:scale-105 transition duration-300"
         onClick={() => setIsOpen(true)}
@@ -51,7 +54,7 @@ export default function UrunKarti({ urun, user }) {
           onClick={() => setIsOpen(false)}
         >
           <div className="relative max-w-3xl max-h-[90vh]">
-            <img src={urun.resim_url} alt={urun.isim} className="rounded-lg max-h-[85vh] object-contain" />
+            <img src={tamResimUrl} alt={urun.isim} className="rounded-lg max-h-[85vh] object-contain" />
             <button className="absolute top-2 right-2 bg-white text-black rounded-full p-2 font-bold">X</button>
           </div>
         </div>
