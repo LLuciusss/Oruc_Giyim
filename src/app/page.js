@@ -137,8 +137,8 @@ export default function Home() {
             <div className="space-y-3 text-sm text-gray-500">
               <p>destek@orhuctekstil.com</p>
               <p>Aydın, Türkiye</p>
-              <p>Furkan Orhan</p>
-              <p>Ahmet Uçgun</p>
+              <a href="https://www.instagram.com/furkanows/">Furkan Orhan </a>
+              <a href="https://www.instagram.com/ucgun.ahmet0809/">Ahmet Uçgun </a>
             </div>
           </div>
         </div>
