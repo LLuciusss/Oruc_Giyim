@@ -138,7 +138,7 @@ export default function Home() {
               <p>destek@orhuctekstil.com</p>
               <p>Aydın, Türkiye</p>
           <p> <a href='https://www.instagram.com/furkanows/'>Furkan Orhan</a> <b> </p>
-              <p> <a href='https://www.instagram.com/ucgun.ahmet0809/'>Ahmet Uçgun </a> </p>
+           <p> <a href='https://www.instagram.com/ucgun.ahmet0809/'>Ahmet Uçgun </a> </p>
             </div>
           </div>
         </div>
