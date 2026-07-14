@@ -6,6 +6,7 @@ export default function UrunKarti({ urun, user }) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Supabase Storage üzerindeki resimlerin tam adresi
+  // Not: Eğer resim ismin veritabanında 'sapka1.jpg' gibi tam isimle tutuluyorsa bu yapı çalışacaktır.
   const resimBaseUrl = "https://tqzarbqjjmojznngysrs.supabase.co/storage/v1/object/public/resimler/";
   const tamResimUrl = `${resimBaseUrl}${urun.resim_url}`;
 
@@ -26,7 +27,7 @@ export default function UrunKarti({ urun, user }) {
 
   return (
     <div className="border rounded-xl p-4 shadow-sm hover:shadow-md transition bg-white">
-      {/* Ürün Resmi (tamResimUrl kullanıldı) */}
+      {/* Ürün Resmi */}
       <img
         src={tamResimUrl}
         alt={urun.isim}
@@ -47,7 +48,7 @@ export default function UrunKarti({ urun, user }) {
         </button>
       </div>
 
-      {/* Büyütülmüş Resim Modal (Lightbox) */}
+      {/* Büyütülmüş Resim Modal */}
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 cursor-zoom-out"
