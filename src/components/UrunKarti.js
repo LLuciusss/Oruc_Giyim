@@ -31,7 +31,7 @@ export default function UrunKarti({ urun, user }) {
       <img
         src={tamResimUrl}
         alt={urun.isim}
-        className="w-full h-64 object-cover rounded-lg cursor-pointer hover:scale-105 transition duration-300"
+        className="w-full h-80 object-contain rounded-lg cursor-pointer hover:scale-105 transition duration-300"
         onClick={() => setIsOpen(true)}
       />
 
