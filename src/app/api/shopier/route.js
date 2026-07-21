@@ -5,39 +5,46 @@ export async function POST(request) {
   try {
     const { sepetUrunleri, userDetails } = await request.json();
 
-    // Toplam fiyatı hesapla
+    // 1. Toplam fiyatı hesapla
     const toplamTutar = sepetUrunleri.reduce((toplam, item) => toplam + (item.urunler.fiyat * item.adet), 0);
 
-    // Çevresel değişkenlerden (Environment Variables) API anahtarını alıyoruz
-    const shopierApiKey = process.env.SHOPIER_API_KEY; 
+    const apiKey = process.env.SHOPIER_API_KEY;
 
-    if (!shopierApiKey) {
-      return NextResponse.json({ error: 'Shopier API anahtarı bulunamadı!' }, { status: 500 });
+    if (!apiKey) {
+      return NextResponse.json({ error: 'API anahtarı eksik!' }, { status: 500 });
     }
 
-    // Shopier API isteklerinde token'ı headers içerisine Bearer olarak ekleyebilirsin:
-    // Örnek istek yapısı:
+    // 2. Shopier API'sine sepet verilerini gönderip ödeme linki alma isteği
+    // (Shopier'in resmi dokümantasyonundaki API endpoint adresini buraya yazmalısın)
     /*
-    const response = await fetch('https://www.shopier.com/api/v1/...', {
+    const shopierResponse = await fetch('https://www.shopier.com/api/v1/payment/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${shopierApiKey}`
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        total_amount: toplamTutar,
+        total_order_value: toplamTutar,
         currency: 'TL',
-        buyer: userDetails
+        buyer: {
+          name: userDetails.name,
+          surname: userDetails.surname,
+          email: userDetails.email,
+          phone: userDetails.phone
+        },
+        items: sepetUrunleri
       })
     });
+    const paymentData = await shopierResponse.json();
     */
 
-    // Şimdilik kullanıcıyı yönlendireceğimiz ödeme URL'ini dönüyoruz
-    const shopierPaymentUrl = `https://www.shopier.com/ShowProduct/api_pay.php?id=XXXXXX`;
+    // Şimdilik test / yönlendirme yapabilmen için form yapısı:
+    // Eğer doğrudan manuel form yönlendirmesi yapacaksan Shopier'in standart POST form adresini kullanmalısın.
+    const shopierPaymentUrl = `https://www.shopier.com/ShowProduct/api_pay.php?id=BURAYA_MAGAZA_ID_YAZILACAK`;
 
     return NextResponse.json({ url: shopierPaymentUrl });
 
   } catch (error) {
-    return NextResponse.json({ error: 'Ödeme başlatılırken bir hata oluştu.' }, { status: 500 });
+    return NextResponse.json({ error: 'Ödeme başlatılamadı.' }, { status: 500 });
   }
 }
