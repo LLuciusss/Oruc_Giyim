@@ -135,10 +135,13 @@ export default function Home() {
           <div>
             <h3 className="font-bold text-gray-900 mb-5">İletişim</h3>
             <div className="space-y-3 text-sm text-gray-500">
-              <p>destek@orhuctekstil.com</p>
-              <p>Aydın, Türkiye</p>
-           <a href='https://www.instagram.com/furkanows/'>Furkan Orhan</a> <b> 
-           <a href='https://www.instagram.com/ucgun.ahmet0809/'>Ahmet Uçgun </a> 
+            <p>Aydın, Türkiye</p>
+<p>
+  <a href="https://www.instagram.com/furkanows/"><b>Furkan Orhan</b></a>
+</p>
+<p>
+  <a href="https://www.instagram.com/ucgun.ahmet0889/">Ahmet Uçgun</a>
+</p>
             </div>
           </div>
         </div>
