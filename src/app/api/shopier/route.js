@@ -9,7 +9,7 @@ export async function POST(request) {
     const toplamTutar = sepetUrunleri.reduce((toplam, item) => toplam + (item.urunler.fiyat * item.adet), 0);
 
     // Çevresel değişkenlerden (Environment Variables) API anahtarını alıyoruz
-    const shopierApiKey = process.env.SHOPIER_API_KEY;
+    const shopierApiKey = process.env.SHOPIER_API_KEY; 
 
     if (!shopierApiKey) {
       return NextResponse.json({ error: 'Shopier API anahtarı bulunamadı!' }, { status: 500 });
